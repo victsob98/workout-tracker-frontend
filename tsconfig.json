@@ -4,13 +4,20 @@
     "allowSyntheticDefaultImports": true,
     "isolatedModules": true,
     "strict": true,
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"],
-      "@atoms/*": ["./components/atoms/*"],
-      "@molecules/*": ["./components/molecules/*"],
-      "@templates/*": ["./components/templates/*"],
-      "@organisms/*": ["./components/organisms/*"],
-      "@pages/*": ["./components/pages/*"]
+      "@atoms/*": ["src/components/atoms/*"],
+      "@molecules/*": ["src/components/molecules/*"],
+      "@templates/*": ["src/components/templates/*"],
+      "@organisms/*": ["src/components/organisms/*"],
+      "@pages/*": ["src/components/pages/*"],
+      "@hooks/*": ["src/components/hooks/*"],
+      "@navigation/*": ["src/components/navigation/*"],
+      "@api/*": ["src/api/*"],
+      "@context/*": ["src/context/*"],
+      "@theme/*": ["src/theme/*"],
+      "@providers/*": ["src/providers/*"],
+      "@i18n/*": ["src/i18n/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
