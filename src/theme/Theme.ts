@@ -11,5 +11,7 @@ export const theme = {
     tertiary: "#E43A64",
     background: "#282a28",
     error: "#fc7474",
+    success: "#3f8a58",
+    info: "#8a733f",
   },
 };

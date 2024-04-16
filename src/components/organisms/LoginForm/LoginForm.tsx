@@ -30,6 +30,7 @@ export const LoginForm = () => {
         control={control}
         name="password"
         label="Password"
+        isPassword
         errorText={errors.password?.message}
       />
       <Button style={styles.button} onPress={handleSubmit(onSubmit)}>

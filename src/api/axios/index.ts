@@ -12,7 +12,7 @@ const axiosClient = axios.create({
   },
   baseURL: BASE_URL,
 });
-
+console.log(BASE_URL);
 axiosClient.interceptors.response.use(
   responseSuccessInterceptor,
   responseFailureInterceptor

@@ -36,6 +36,7 @@ export const RegisterForm = () => {
       />
       <ControlledTextInput
         control={control}
+        isPassword
         name="password"
         label="Password"
         errorText={formState.errors.password?.message}

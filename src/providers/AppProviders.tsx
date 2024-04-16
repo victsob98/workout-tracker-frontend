@@ -3,11 +3,15 @@ import { AppProvidersProps } from "./AppProviders.types";
 import { LocaleContextController } from "@context/locale/localeContextController/LocaleContextController";
 import { ApiClientContextController } from "@context/apiClient/apiClientContextController/ApiClientContextController";
 import { theme } from "@theme/Theme";
+import SnackbarContextProvider from "@context/snackbar/SnackbarContextProvider/SnackbarContextProvider";
+import { AuthContextProvider } from "@context/auth/authContextProvider/AuthContextProvider";
 
 export const AppProviders = ({ children }: AppProvidersProps) => (
   <PaperThemeProvider theme={theme}>
-    <LocaleContextController>
-      <ApiClientContextController>{children}</ApiClientContextController>
-    </LocaleContextController>
+    <SnackbarContextProvider>
+      <LocaleContextController>
+        <ApiClientContextController>{children}</ApiClientContextController>
+      </LocaleContextController>
+    </SnackbarContextProvider>
   </PaperThemeProvider>
 );
