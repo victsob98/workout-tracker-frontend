@@ -10,8 +10,8 @@ export const theme = {
     inactiveText: "#8f8c7a",
     tertiary: "#E43A64",
     background: "#282a28",
-    error: "#fc7474",
-    success: "#3f8a58",
-    info: "#8a733f",
+    error: "#d11d1d",
+    success: "#00a150",
+    info: "#ad9518",
   },
 };

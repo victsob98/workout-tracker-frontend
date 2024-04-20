@@ -22,7 +22,7 @@ export type LoginMutationArguments = {
 };
 
 export interface LoginMutationResponse extends User {
-  accessToken: string;
+  token: string;
 }
 
 //REGISTER MUTATION TYPES

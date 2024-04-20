@@ -1,34 +1,37 @@
+import Button from "@atoms/Button";
 import { Link } from "expo-router";
 import { View } from "react-native";
-import Button from "@atoms/Button";
 import { Text } from "react-native-paper";
+import { useCustomRouter } from "src/hooks/useCustomRouter/useCustomRouter";
+import { useLocale } from "src/hooks/useLocale/useLocale";
+
 import styles from "./EntryScreenContent.styles";
-import { useRouter } from "expo-router";
 
 export const EntryScreenContent = () => {
-  const router = useRouter();
+  const { navigate } = useCustomRouter();
+  const { t } = useLocale();
 
   return (
     <View style={styles.container}>
       <Text variant="displayMedium" style={styles.displayMedium}>
-        Welcome to the
+        {t("entry.welcome")}
       </Text>
       <Text variant="displaySmall" style={styles.displaySmall}>
-        Workout Tracker
+        {t("entry.appName")}
       </Text>
       <Text variant="bodyLarge" style={styles.bodyLarge}>
-        Manage your workout schedule efficiently
+        {t("entry.description")}
       </Text>
       <Button
         style={styles.button}
         onPress={() => {
-          router.navigate("/login");
+          navigate("/login");
         }}
       >
-        Login
+        {t("button.login")}
       </Button>
       <Link href="/register" style={styles.link}>
-        Register if you don't have an account
+        {t("entry.register")}
       </Link>
     </View>
   );

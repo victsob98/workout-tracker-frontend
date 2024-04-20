@@ -1,11 +1,14 @@
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { LoginForm, loginFormValidator } from "./loginFormValidator";
-import { useMutation } from "src/hooks/useMutation/useMutation";
+import { useForm } from "react-hook-form";
 import { useAuth } from "src/hooks/useAuth/useAuth";
+import { useCustomRouter } from "src/hooks/useCustomRouter/useCustomRouter";
+
+import { LoginForm, loginFormValidator } from "./loginFormValidator";
 
 const useLogin = () => {
-  const { logIn, user } = useAuth();
+  const { logIn } = useAuth();
+  const { navigate } = useCustomRouter();
+
   const form = useForm<LoginForm>({
     resolver: zodResolver(loginFormValidator),
     defaultValues: {
@@ -13,14 +16,16 @@ const useLogin = () => {
       password: "",
     },
   });
+
   const onSubmit = async (data: LoginForm) => {
     try {
       await logIn(data);
+      navigate("/(tabs)/");
+      form.reset();
     } catch (error) {
-      console.log(error);
+      form.trigger("email");
     }
   };
-  console.log(user);
   return { form, onSubmit };
 };
 

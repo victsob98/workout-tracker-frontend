@@ -1,3 +1,22 @@
-{
-  "home.header": "witaj świecie"
+{ 
+  "button.login":"Zaloguj się",
+  "form.email": "Email",
+  "form.password": "Hasło",
+  "error.message":"Coś poszło nie tak",
+
+  "entry.welcome": "Witaj w aplikacji",
+  "entry.appName": "Workout Tracker",
+  "entry.description": "Zarządzaj swoimi planami treningowymi",
+  "entry.register": "Zarejestruj się jeśli nie masz konta",
+  
+
+  "login.title": "Witaj ponownie",
+  "login.successMessage":"Zostałeś zalogowany",
+
+  "register.title": "Stwórz konto",
+  "register.name": "Imię",
+  "register.lastname": "Nazwisko",
+  "register.registerButton": "Zarejestruj się",
+  "register.successMessage":"Rejestracja przebeigła pomyślnie",
+
 }

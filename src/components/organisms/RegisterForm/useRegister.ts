@@ -1,14 +1,17 @@
-import { useForm } from "react-hook-form";
+import { SnackbarType } from "@context/snackbar/SnackbarContext/Snackbar.enum";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { RegisterForm, registerFormValidator } from "./registerFormValidator";
+import { useForm } from "react-hook-form";
+import { useCustomRouter } from "src/hooks/useCustomRouter/useCustomRouter";
+import { useLocale } from "src/hooks/useLocale/useLocale";
 import { useMutation } from "src/hooks/useMutation/useMutation";
 import { useSnackbar } from "src/hooks/useSnackbar/useSnackbar";
-import { SnackbarType } from "@context/snackbar/SnackbarContext/Snackbar.enum";
-import { useRouter } from "expo-router";
+
+import { RegisterForm, registerFormValidator } from "./registerFormValidator";
 
 const useRegister = () => {
   const { setSnackbarState } = useSnackbar();
-  const { navigate } = useRouter();
+  const { navigate } = useCustomRouter();
+  const { t } = useLocale();
 
   const form = useForm<RegisterForm>({
     resolver: zodResolver(registerFormValidator),
@@ -20,19 +23,17 @@ const useRegister = () => {
     },
   });
 
-  const { reset } = form;
-
   const { mutateAsync: registerMutation } = useMutation("registerMutation", {
     onSuccess: () => {
       setSnackbarState({
         visible: true,
-        text: "You have been registered successfully",
+        text: t("register.successMessage"),
       });
     },
-    onError: (error) => {
+    onError: () => {
       setSnackbarState({
         visible: true,
-        text: "Something went wrong",
+        text: t("error.message"),
         type: SnackbarType.Error,
       });
     },
@@ -41,7 +42,7 @@ const useRegister = () => {
   const onSubmit = async (data: RegisterForm) => {
     try {
       await registerMutation({ ...data });
-      reset();
+      form.reset();
       navigate("/login");
     } catch (error) {
       form.trigger("firstName");

@@ -1,3 +1,4 @@
+import { AxiosMutationsType, mutations } from "@api/actions";
 import {
   UseMutationResult,
   useMutation as useRQMutation,
@@ -5,17 +6,13 @@ import {
   MutationKey,
 } from "@tanstack/react-query";
 
-import { AxiosMutationsType, mutations } from "@api/actions";
-
-import { DataForMutation, GetMutationParams } from "./useMutation.types";
 import { useApiClient } from "../useApiClient/useApiClient";
 
-export const useMutation = <
-  Key extends keyof AxiosMutationsType,
-  TError = unknown,
->(
+import { DataForMutation, GetMutationParams } from "./useMutation.types";
+
+export const useMutation = <Key extends keyof AxiosMutationsType, TError = unknown>(
   mutation: Key,
-  options?: UseMutationOptions<DataForMutation<Key>, TError>
+  options?: UseMutationOptions<DataForMutation<Key>, TError>,
 ) => {
   const { client } = useApiClient();
   const mutationFn = mutations[mutation](client);

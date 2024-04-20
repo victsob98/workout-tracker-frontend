@@ -1,3 +1,21 @@
 {
-  "home.header": "hello world"
+  "button.login":"Log in",
+  "form.email": "Email",
+  "form.password": "Password",
+  "error.message":"Something went wrong",
+
+  "entry.welcome": "Welcome to the",
+  "entry.appName": "Workout Tracker",
+  "entry.description": "Manage your workout schedule efficiently",
+  "entry.register": "Register if you don't have an account",
+
+  "login.title": "Welcome back",
+  "login.successMessage":"You have been logged successfully",
+
+  "register.title": "Create account",
+  "register.name": "Firstname",
+  "register.lastname": "Lastname",
+  "register.registerButton": "Register",
+  "register.successMessage":"You have been registered successfully",
+  
 }
