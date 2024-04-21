@@ -1,8 +1,4 @@
-import {
-  LoginMutationArguments,
-  LoginMutationResponse,
-  User,
-} from "@api/actions/auth/auth.types";
+import { LoginMutationArguments, LoginMutationResponse, User } from "@api/actions/auth/auth.types";
 import { UseMutateAsyncFunction } from "@tanstack/react-query";
 
 export type AuthState = {
@@ -12,11 +8,6 @@ export type AuthState = {
 };
 
 export interface AuthContextValueType extends AuthState {
-  logIn: UseMutateAsyncFunction<
-    LoginMutationResponse,
-    unknown,
-    LoginMutationArguments,
-    unknown
-  >;
+  logIn: UseMutateAsyncFunction<LoginMutationResponse, unknown, LoginMutationArguments, unknown>;
   logOut: () => void;
 }

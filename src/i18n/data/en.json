@@ -11,6 +11,7 @@
 
   "login.title": "Welcome back",
   "login.successMessage":"You have been logged successfully",
+  "login.logutMessage": "You have been logged out successfully",
 
   "register.title": "Create account",
   "register.name": "Firstname",

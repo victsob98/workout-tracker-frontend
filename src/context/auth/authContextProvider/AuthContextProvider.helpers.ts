@@ -1,5 +1,4 @@
 import * as SecureStore from "expo-secure-store";
-import { jwtDecode } from "jwt-decode";
 
 interface KeyValuePair {
   key: string;
@@ -21,19 +20,4 @@ export const setStorageItems = async (items: KeyValuePair[]) => {
 export const deleteStorageItems = async (keys: string[]) => {
   const promises = keys.map((key) => SecureStore.deleteItemAsync(key));
   await Promise.all(promises);
-};
-
-export const isTokenValid = async () => {
-  const [token] = await getStorageItems(["accessToken"]);
-  if (token) {
-    const decodedToken = jwtDecode(token);
-    const currentDate = new Date();
-    if (decodedToken?.exp && decodedToken.exp * 1000 < currentDate.getTime()) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
-  return false;
 };

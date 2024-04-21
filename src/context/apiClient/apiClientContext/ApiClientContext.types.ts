@@ -1,4 +1,4 @@
-import { AxiosInstance, AxiosResponse } from "axios";
+import { AxiosInstance } from "axios";
 
 export type ApiResponse<TData = unknown, TConfig = unknown> = {
   data: TData;

@@ -3,29 +3,30 @@ import { useFocusEffect } from "expo-router";
 import { useCallback, useState } from "react";
 import { useApiClient } from "src/hooks/useApiClient/useApiClient";
 import { useCustomRouter } from "src/hooks/useCustomRouter/useCustomRouter";
+import { useLocale } from "src/hooks/useLocale/useLocale";
 import { useMutation } from "src/hooks/useMutation/useMutation";
 import { useSnackbar } from "src/hooks/useSnackbar/useSnackbar";
 
 import { AuthContext } from "../authContext/AuthContext";
 import { AuthState } from "../authContext/AuthContext.types";
 
-import { getStorageItems, setStorageItems, deleteStorageItems, isTokenValid } from "./AuthContextProvider.helpers";
+import { getStorageItems, setStorageItems, deleteStorageItems } from "./AuthContextProvider.helpers";
 import { AuthContextProviderProps } from "./AuthContextProvider.types";
 
 export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
-  const { setSnackbarState } = useSnackbar();
+  const { showSnackbar } = useSnackbar();
   const [authState, setAuthState] = useState<AuthState>({
     isAuthenticated: false,
     isLoading: false,
     user: null,
   });
   const { client } = useApiClient();
-
   const { navigate } = useCustomRouter();
+  const { t } = useLocale();
 
-  const setNotAuthenticated = useCallback(() => {
+  const setNotAuthenticated = useCallback(async () => {
     navigate("/");
-    deleteStorageItems(["accessToken", "user"]);
+    await deleteStorageItems(["accessToken", "user"]);
     setAuthState({
       isAuthenticated: false,
       isLoading: false,
@@ -39,7 +40,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
       const checkUserToken = async () => {
         const [accessToken, user] = await getStorageItems(["accessToken", "user"]);
         if (!accessToken && !user) {
-          setNotAuthenticated();
+          await setNotAuthenticated();
         } else {
           navigate("/(tabs)/");
           if (user) {
@@ -51,21 +52,6 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
           }
         }
       };
-      checkUserToken();
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []),
-  );
-
-  useFocusEffect(
-    useCallback(() => {
-      const checkUserToken = async () => {
-        const result = await isTokenValid();
-        if (!result) {
-          setNotAuthenticated();
-        }
-        navigate("/(tabs)/");
-      };
-
       checkUserToken();
     }, [navigate, setNotAuthenticated]),
   );
@@ -83,26 +69,16 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
         user: { ...rest },
       });
       client.defaults.headers.common.Authorization = token;
-      setSnackbarState({
-        visible: true,
-        text: "You have been logged successfully",
-      });
+      showSnackbar(t("login.successMessage"));
     },
     onError: () => {
-      setSnackbarState({
-        visible: true,
-        text: "Something went wrong",
-        type: SnackbarType.Error,
-      });
+      showSnackbar(t("error.message"), SnackbarType.Error);
     },
   });
 
   const logOut = () => {
     setNotAuthenticated();
-    setSnackbarState({
-      visible: true,
-      text: "You have been logged out successfully",
-    });
+    showSnackbar(t("login.logutMessage"));
   };
 
   const ctxValue = { ...authState, logIn, logOut };

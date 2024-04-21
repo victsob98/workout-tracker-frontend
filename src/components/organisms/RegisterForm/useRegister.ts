@@ -9,7 +9,7 @@ import { useSnackbar } from "src/hooks/useSnackbar/useSnackbar";
 import { RegisterForm, registerFormValidator } from "./registerFormValidator";
 
 const useRegister = () => {
-  const { setSnackbarState } = useSnackbar();
+  const { showSnackbar } = useSnackbar();
   const { navigate } = useCustomRouter();
   const { t } = useLocale();
 
@@ -25,17 +25,10 @@ const useRegister = () => {
 
   const { mutateAsync: registerMutation } = useMutation("registerMutation", {
     onSuccess: () => {
-      setSnackbarState({
-        visible: true,
-        text: t("register.successMessage"),
-      });
+      showSnackbar(t("register.successMessage"));
     },
     onError: () => {
-      setSnackbarState({
-        visible: true,
-        text: t("error.message"),
-        type: SnackbarType.Error,
-      });
+      showSnackbar(t("error.message"), SnackbarType.Error);
     },
   });
 

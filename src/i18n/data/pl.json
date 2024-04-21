@@ -11,7 +11,8 @@
   
 
   "login.title": "Witaj ponownie",
-  "login.successMessage":"Zostałeś zalogowany",
+  "login.successMessage":"Zalogowano pomyślnie",
+  "login.logutMessage": "Wylogowano pomyślnie",
 
   "register.title": "Stwórz konto",
   "register.name": "Imię",

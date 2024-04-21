@@ -7,5 +7,5 @@ export type SnackbarState = {
 };
 
 export type SnackbarContextValueType = {
-  setSnackbarState: (value: SnackbarState) => void;
+  showSnackbar: (text: string, type?: SnackbarType) => void;
 };

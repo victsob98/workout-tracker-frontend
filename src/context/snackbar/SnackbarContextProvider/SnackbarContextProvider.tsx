@@ -15,6 +15,12 @@ const SnackbarContextProvider = ({ children }: SnackbarContextProviderProps) => 
     text: "",
   });
 
+  const showSnackbar = useCallback(
+    (text: string, type?: SnackbarType) =>
+      setSnackbarState({ visible: true, text, type: type ?? SnackbarType.Success }),
+    [],
+  );
+
   const handleOnDismiss = useCallback(
     () => setSnackbarState({ visible: !snackbarState.visible }),
     [snackbarState.visible],
@@ -27,7 +33,7 @@ const SnackbarContextProvider = ({ children }: SnackbarContextProviderProps) => 
   );
 
   const value: SnackbarContextValueType = {
-    setSnackbarState,
+    showSnackbar,
   };
 
   return (
