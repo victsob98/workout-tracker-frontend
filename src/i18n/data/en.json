@@ -3,6 +3,8 @@
   "form.email": "Email",
   "form.password": "Password",
   "error.message":"Something went wrong",
+  "form.emailRequired":"Provide valid email",
+  "form.passwordRequired":"Password must have at least 5 characters",
 
   "entry.welcome": "Welcome to the",
   "entry.appName": "Workout Tracker",
@@ -18,5 +20,6 @@
   "register.lastname": "Lastname",
   "register.registerButton": "Register",
   "register.successMessage":"You have been registered successfully",
-  
+  "register.nameRequired":"Firstname is required",
+  "register.lastnameRequired":"Lastname is required",
 }

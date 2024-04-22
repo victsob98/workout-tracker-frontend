@@ -22,6 +22,15 @@ export const AppMessages = {
 
 export type Translation = keyof typeof AppMessages;
 
+export const isTranslationKey = (key?: string) => {
+  const translationKeys = Object.keys(AppMessages);
+  if (key && translationKeys.includes(key)) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
 export type TranslateFn = (id: Translation, value?: Record<string, PrimitiveType>) => string;
 
 export const translations: Record<AppLocale, Record<Translation, string>> = {

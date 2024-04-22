@@ -1,10 +1,10 @@
 import { z } from "zod";
 
 export const registerFormValidator = z.object({
-  firstName: z.string().min(1, { message: "Firstname is required" }),
-  lastName: z.string().min(1, { message: "Lastname is required" }),
-  email: z.string().min(1, { message: "Provide valid email" }).email(),
-  password: z.string().min(5, { message: "Password must have at least 5 characters" }),
+  firstName: z.string().min(1, { message: "register.nameRequired" }),
+  lastName: z.string().min(1, { message: "register.lastnameRequired" }),
+  email: z.string().min(1, { message: "form.emailRequired" }).email(),
+  password: z.string().min(5, { message: "form.passwordRequired" }),
 });
 
 export type RegisterForm = z.infer<typeof registerFormValidator>;

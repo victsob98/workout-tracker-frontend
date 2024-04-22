@@ -6,3 +6,9 @@ export interface SnackbarProps extends PaperSnackbarProps {
 }
 
 export const SNACKBAR_DEFAULT_DURATION = 3500;
+
+export const SNACKBAR_ICON: Record<SnackbarType, string> = {
+  [SnackbarType.Success]: "check-circle-outline",
+  [SnackbarType.Error]: "alert-circle-outline",
+  [SnackbarType.Info]: "information-outline",
+};
