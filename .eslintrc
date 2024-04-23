@@ -1,0 +1,72 @@
+{
+  "extends": ["plugin:prettier/recommended", "@react-native", "plugin:@typescript-eslint/recommended", "prettier"],
+  "plugins": ["prettier", "react", "react-native", "@typescript-eslint", "eslint-plugin-import"],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "printWidth": 120,
+        "tabWidth": 2,
+        "trailingComma": "all",
+        "proseWrap": "always",
+        "endOfLine":"auto"
+      }
+    ],
+    "no-console": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "no-restricted-exports": ["error", { "restrictedNamedExports": ["default"] }],
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "react-native/no-unused-styles": 2,
+    "react-native/no-inline-styles": 2,
+    "react-native/no-color-literals": 2,
+    "react-native/no-single-element-style-arrays": 2,
+    "react/react-in-jsx-scope": "off",
+    "import/order": [
+      "error",
+      {
+        "newlines-between": "always",
+        "alphabetize": { "order": "asc", "caseInsensitive": true },
+        "groups": ["external", "builtin", "internal", "parent", "sibling", "index"],
+        "pathGroups": [
+          {
+            "pattern": "src/*",
+            "group": "internal"
+          }
+        ]
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"],
+        "moduleDirectory": ["node_modules", "src/"],
+        "extensions": [".ts", ".tsx", ".js", "jsx"]
+      }
+    }
+  },
+  "overrides": [
+    {
+      "files": ["**/!(setupTests|test/utils|*.spec.*|*.test.*).ts?x"],
+      "rules": {
+        "@typescript-eslint/no-empty-function": "error",
+        "@typescript-eslint/explicit-function-return-type": [
+          "error",
+          {
+            "allowExpressions": true
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.js"],
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off"
+      }
+    }
+  ]
+}

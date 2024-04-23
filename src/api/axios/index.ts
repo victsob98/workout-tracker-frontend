@@ -12,10 +12,6 @@ const axiosClient = axios.create({
   },
   baseURL: BASE_URL,
 });
-
-axiosClient.interceptors.response.use(
-  responseSuccessInterceptor,
-  responseFailureInterceptor
-);
+axiosClient.interceptors.response.use(responseSuccessInterceptor, responseFailureInterceptor);
 
 export default axiosClient;

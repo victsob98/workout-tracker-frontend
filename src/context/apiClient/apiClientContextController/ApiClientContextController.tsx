@@ -1,13 +1,12 @@
+import axiosClient from "@api/axios";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import { ApiClientControllerProps } from "./ApiClientContextController.types";
-import { ApiClientContextValue } from "../apiClientContext/ApiClientContext.types";
 import { ApiClientContext } from "../apiClientContext/ApiClientContext";
-import axiosClient from "@api/axios";
+import { ApiClientContextValue } from "../apiClientContext/ApiClientContext.types";
 
-export const ApiClientContextController = ({
-  children,
-}: ApiClientControllerProps) => {
+import { ApiClientControllerProps } from "./ApiClientContextController.types";
+
+export const ApiClientContextController = ({ children }: ApiClientControllerProps) => {
   const queryClient = new QueryClient({
     defaultOptions: { queries: { refetchOnWindowFocus: false } },
   });
