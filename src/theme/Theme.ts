@@ -13,5 +13,6 @@ export const theme = {
     error: "#d11d1d",
     success: "#00a150",
     info: "#ad9518",
+    lightBackground: "#616161",
   },
 };

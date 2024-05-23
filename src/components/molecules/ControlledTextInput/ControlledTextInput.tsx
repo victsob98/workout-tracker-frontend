@@ -1,14 +1,12 @@
+import TextInput from "@atoms/TextInput";
+import ErrorMessage from "@molecules/ErrorMessage";
 import React from "react";
 import { Controller, FieldPath, FieldValues } from "react-hook-form";
 import { View } from "react-native";
-import TextInput from "@atoms/TextInput";
-import ErrorMessage from "@molecules/ErrorMessage";
+
 import { ControlledTextInputProps } from "./ControlledTextInput.types";
 
-const ControlledTextInput = <
-  TFieldValues extends FieldValues,
-  TName extends FieldPath<TFieldValues>,
->({
+const ControlledTextInput = <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>>({
   isPassword = false,
   control,
   rules,

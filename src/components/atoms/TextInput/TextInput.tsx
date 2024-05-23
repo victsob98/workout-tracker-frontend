@@ -1,8 +1,5 @@
 import { theme } from "@theme/Theme";
-import {
-  TextInput as PaperTextInput,
-  TextInputProps,
-} from "react-native-paper";
+import { TextInput as PaperTextInput, TextInputProps } from "react-native-paper";
 
 const TextInput = ({ ...rest }: TextInputProps) => {
   return (

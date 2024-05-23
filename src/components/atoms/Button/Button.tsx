@@ -1,6 +1,7 @@
 import { Button as PaperButton } from "react-native-paper";
-import { ButtonProps } from "./Button.types";
+
 import { BUTTON_STYLE } from "./Button.const";
+import { ButtonProps } from "./Button.types";
 
 const Button = ({ type = "primary", children, ...rest }: ButtonProps) => {
   return (

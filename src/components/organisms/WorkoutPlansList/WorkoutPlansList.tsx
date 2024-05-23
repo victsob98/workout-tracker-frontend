@@ -2,9 +2,7 @@ import { WorkoutPlan } from "@organisms/WorkoutPlan/WorkoutPlan";
 import { MeasurmentUnit, Series, WorkoutPlan as WorkoutProps } from "@organisms/WorkoutPlan/WorkoutPlan.types";
 import { FlatList } from "react-native";
 
-import styles from "./TabOne.styles";
-
-export const TabOne = () => {
+export const WorkoutPlansList = () => {
   const seriesA: Series[] = [
     {
       exercise: {
@@ -24,14 +22,17 @@ export const TabOne = () => {
       ],
     },
   ];
-  const workoutPlann: WorkoutProps = {
-    series: seriesA,
-    workout: {
-      duration: 1,
-      id: 1,
-      name: "Fbw",
-      userId: 1,
+  const workoutPlans: WorkoutProps[] = [
+    {
+      series: seriesA,
+      workout: {
+        duration: 1,
+        id: 1,
+        name: "Fbw",
+        userId: 1,
+      },
     },
-  };
-  return <WorkoutPlan workoutPlan={workoutPlann} />;
+  ];
+
+  return <FlatList data={workoutPlans} renderItem={({ item }) => <WorkoutPlan workoutPlan={item} />} />;
 };

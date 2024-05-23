@@ -20,7 +20,7 @@ const useLogin = () => {
   const onSubmit = async (data: LoginForm) => {
     try {
       await logIn(data);
-      navigate("/(tabs)/");
+      navigate("/(tabs)/(workoutPlans)/");
       form.reset();
     } catch (error) {
       form.trigger("email");

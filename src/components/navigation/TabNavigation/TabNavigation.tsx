@@ -1,36 +1,48 @@
-import React from "react";
-import { Tabs } from "expo-router";
-
-import { useColorScheme } from "@hooks/useColorScheme";
-import { useClientOnlyValue } from "@hooks/useClientOnlyValue";
-import Colors from "@theme/Colors";
 import { TabBarIcon } from "@atoms/TabBarIcon/TabBarIcon";
+import { useClientOnlyValue } from "@hooks/useClientOnlyValue";
+import { NavigationHeader } from "@organisms/NavigationHeader";
+import { theme } from "@theme/Theme";
+import { Tabs } from "expo-router";
+import React from "react";
+import { IconButton } from "react-native-paper";
+
+import { tabNavigationOptions } from "./TabNavigation.types";
 
 export const TabNavigation = () => {
-  const colorScheme = useColorScheme();
-
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors["dark"].tint,
-        // Disable the static render of the header on web
-        // to prevent a hydration error in React Navigation v6.
-        headerStyle: { backgroundColor: "black" },
+        ...tabNavigationOptions,
         headerShown: useClientOnlyValue(false, true),
       }}
+      sceneContainerStyle={{ backgroundColor: "black" }}
     >
       <Tabs.Screen
-        name="index"
+        name="workoutPlans/index"
         options={{
-          title: "Tab One",
+          title: "Workout plans",
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          header: (props) => (
+            <NavigationHeader
+              title={props.options.title}
+              leftComponent={<IconButton icon={"chevron-left"} size={35} iconColor={theme.colors.secondary} />}
+              rightComponent={<IconButton icon={"plus-circle"} size={35} iconColor={theme.colors.primary} />}
+            />
+          ),
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="exercises"
         options={{
-          title: "Tab Two",
+          title: "Exercises",
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          header: (props) => (
+            <NavigationHeader
+              title={props.options.title}
+              leftComponent={<IconButton icon={"chevron-left"} size={35} iconColor={theme.colors.secondary} />}
+              rightComponent={<IconButton icon={"plus-circle"} size={35} iconColor={theme.colors.primary} />}
+            />
+          ),
         }}
       />
     </Tabs>

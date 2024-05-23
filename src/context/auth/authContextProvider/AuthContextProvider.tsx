@@ -42,7 +42,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
         if (!accessToken && !user) {
           await setNotAuthenticated();
         } else {
-          navigate("/(tabs)/");
+          navigate("/(tabs)/workoutPlans");
           if (user) {
             setAuthState({
               isAuthenticated: true,
