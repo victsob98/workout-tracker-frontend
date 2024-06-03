@@ -14,5 +14,7 @@ export const theme = {
     success: "#00a150",
     info: "#ad9518",
     lightBackground: "#616161",
+    white: "#000000",
+    lightGrey: "#999999",
   },
 };

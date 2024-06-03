@@ -18,5 +18,8 @@
   "register.lastname": "Lastname",
   "register.registerButton": "Register",
   "register.successMessage":"You have been registered successfully",
-  
+
+  "emptyWorkoutList.title": "No workout plans",
+  "emptyWorkoutList.subtitle": "You haven't created any workout plans yet.",
+  "emptyWorkoutList.button": "Add new",
 }

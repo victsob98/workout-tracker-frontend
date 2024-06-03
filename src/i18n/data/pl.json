@@ -20,4 +20,8 @@
   "register.registerButton": "Zarejestruj się",
   "register.successMessage":"Rejestracja przebeigła pomyślnie",
 
+  "emptyWorkoutList.title": "Brak planów treningowych",
+  "emptyWorkoutList.subtitle": "Żaden z twoich planów treningowych nie został jeszcze utworzony",
+  "emptyWorkoutList.button": "Dodaj nowy",
+
 }
