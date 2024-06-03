@@ -1,5 +1,12 @@
-import EntryScreen from "@templates/EntryScreen";
+import BackgroundLayout from "@molecules/BackgroundLayout";
+import EntryScreenContent from "@organisms/EntryScreenContent";
 
-const EntryPage = () => <EntryScreen />;
+const Entry = () => {
+  return (
+    <BackgroundLayout source={require("../assets/images/gym.jpg")}>
+      <EntryScreenContent />
+    </BackgroundLayout>
+  );
+};
 
-export default EntryPage;
+export default Entry;
